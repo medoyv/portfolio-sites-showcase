@@ -1,0 +1,338 @@
+/* Individual identity for each demo: navigation, badges, panels and motion */
+.demo-page{overflow-x:clip}
+.demo-header{position:sticky;isolation:isolate;transition:background-color .35s,border-color .35s,color .35s}
+.demo-header::after{content:"";position:absolute;left:0;bottom:-1px;z-index:1;width:100%;height:2px;background:var(--demo-accent);transform:scaleX(var(--reading-progress,0));transform-origin:left;transition:transform .12s linear}
+.demo-header nav a{position:relative;transition:color .24s,background-color .24s,transform .24s}
+.demo-header nav a[aria-current="location"]{color:var(--demo-accent)}
+.demo-header nav a[aria-current="location"]::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:2px;background:var(--demo-accent)}
+.demo-badge{width:max-content;max-width:100%;margin:0 0 17px;padding:8px 12px;border:1px solid color-mix(in srgb,var(--demo-ink) 22%,transparent);border-radius:999px;color:var(--demo-ink);font-size:7px;font-weight:650;letter-spacing:.13em;line-height:1.25;text-transform:uppercase;animation:badgeEnter .55s .08s both}
+.route-step{min-width:0;display:flex;align-items:center;gap:9px}
+.route-step>b{color:var(--demo-accent);font:italic 18px Georgia,serif}
+.route-step>span{font-size:8px;letter-spacing:.1em;text-transform:uppercase}
+.route-jump{justify-self:end;display:flex;align-items:center;gap:10px;color:var(--demo-accent);font-size:9px;transition:gap .25s}
+.route-jump:hover{gap:16px}
+.route-jump i{font-size:16px;font-style:normal}
+.demo-proof .wrap{grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
+.demo-page .demo-section-head .demo-kicker{font-size:8px}
+.demo-items{align-items:start}
+.demo-tile{position:relative;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s,border-color .3s,background-color .3s}
+.demo-tile:focus-within{outline:2px solid var(--demo-accent);outline-offset:3px}
+.item-picture,.gallery-image{transition:filter .35s,transform .35s,border-radius .35s}
+.item-picture img,.gallery-image img{transition:transform .75s cubic-bezier(.2,.65,.25,1),filter .4s}
+.demo-filter,.select-item,.demo-cta,.demo-header button,.time-slot,.favorite{transition:transform .25s,background-color .25s,color .25s,border-color .25s,box-shadow .25s}
+.demo-filter:hover,.select-item:hover,.demo-header button:hover,.time-slot:hover{transform:translateY(-2px)}
+.demo-modal.open{animation:modalFade .25s ease-out both}
+.demo-modal.open .demo-modal-box{animation:modalLift .42s cubic-bezier(.2,.7,.2,1) both}
+.demo-page .demo-modal-box{border-radius:var(--modal-radius,0)}
+.demo-page[data-scene="coffee"] .demo-modal-box{--modal-radius:18px 18px 4px 4px}
+.demo-page[data-scene="flower"] .demo-modal-box{--modal-radius:150px 150px 10px 10px}
+.demo-page[data-scene="bookshop"] .demo-modal-box{--modal-radius:2px}
+.demo-page[data-scene="saas"] .demo-modal-box{--modal-radius:18px}
+.demo-page[data-scene="festival"] .demo-modal-box{--modal-radius:4px}
+
+/* Cafe: warm glass, capsule navigation, handwritten menu rail */
+.demo-page[data-scene="coffee"] .demo-header{background:#211811ed;color:#f5eddf;border-color:#ffffff1c}
+.demo-page[data-scene="coffee"] .demo-header nav a{padding:8px 11px;border:1px solid transparent;border-radius:999px}
+.demo-page[data-scene="coffee"] .demo-header nav a:hover,.demo-page[data-scene="coffee"] .demo-header nav a[aria-current="location"]{background:#ffffff12;border-color:#ffffff22}
+.demo-page[data-scene="coffee"] .demo-header button{border-color:#ffffff35;border-radius:999px;color:#f4eadb}
+.demo-page[data-scene="coffee"] .badge-coffee{border-color:#e5a65377;background:#251a11d9;color:#f3d2a1}
+.demo-proof.route-coffee{background:#211811}
+.demo-proof.route-coffee .route-step{padding:8px 0;border-bottom:1px solid #ffffff25}
+.demo-catalog.layout-coffee .demo-controls{padding:10px 12px;border:1px solid #34271f22;border-radius:999px}
+.demo-catalog.layout-coffee .demo-filter{border-radius:999px}
+.demo-catalog.layout-coffee .demo-items{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.demo-catalog.layout-coffee .product-tile{display:grid;grid-template-columns:125px 1fr;align-items:center;border-bottom:1px solid #2b21151c}
+.demo-catalog.layout-coffee .item-picture{height:112px;border-radius:50%}
+.demo-catalog.layout-coffee .tile-info{padding:10px}
+.demo-catalog.layout-coffee .tile-info>p{min-height:0}
+.demo-catalog.layout-coffee .product-tile:hover .item-picture{transform:rotate(-4deg)}
+
+/* Bakery: paper menu, round image wells and a small bakery label */
+.demo-page[data-scene="bakery"] .demo-header{background:#f6eee2;border-color:#6a3b201e}
+.demo-page[data-scene="bakery"] .demo-header button{border-color:#b55e2e66;border-radius:2px}
+.demo-page[data-scene="bakery"] .badge-bakery{border:0;border-radius:2px;background:#b55e2e;color:#fff8ec;box-shadow:4px 4px 0 #e2b88b}
+.demo-proof.route-bakery{background:#492c20;color:#f4e8d7}
+.demo-proof.route-bakery .route-step{padding:10px 12px;border:1px dashed #d8b99255}
+.demo-catalog.layout-bakery .demo-items{grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
+.demo-catalog.layout-bakery .product-tile{padding:10px;background:#fbf5ea;box-shadow:0 6px 20px #68462713}
+.demo-catalog.layout-bakery .item-picture{height:205px;border-radius:50% 50% 6px 6px}
+.demo-catalog.layout-bakery .tile-info{padding:12px 5px 3px}
+.demo-catalog.layout-bakery .product-tile:hover{transform:translateY(-5px) rotate(-.5deg);box-shadow:0 13px 24px #68462722}
+
+/* Flower studio: rose glass, rounded tabs and floating bouquet cards */
+.demo-page[data-scene="flower"] .demo-header{background:#f7e7e6ed;color:#412a35;border-color:#8a455322}
+.demo-page[data-scene="flower"] .demo-header nav a{padding:8px 12px;border-radius:999px}
+.demo-page[data-scene="flower"] .demo-header nav a:hover,.demo-page[data-scene="flower"] .demo-header nav a[aria-current="location"]{background:#ffffff9c}
+.demo-page[data-scene="flower"] .demo-header button{border-color:#ca537066;border-radius:999px;color:#412a35}
+.demo-page[data-scene="flower"] .badge-flower{background:#fff9f4;border-color:#ca537055;color:#9b455d}
+.demo-proof.route-flower{background:#f1d8d8;color:#412a35}
+.demo-proof.route-flower .route-step{justify-content:center;padding:10px 12px;border-radius:999px;background:#fff6f2}
+.demo-catalog.layout-flower .demo-items{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.demo-catalog.layout-flower .product-tile{overflow:hidden;background:#fff8f3;border-radius:180px 180px 10px 10px}
+.demo-catalog.layout-flower .item-picture{height:330px;border-radius:180px 180px 4px 4px}
+.demo-catalog.layout-flower .tile-info{padding:17px 22px}
+.demo-catalog.layout-flower .product-tile:hover{transform:translateY(-8px) rotate(.5deg);box-shadow:0 18px 35px #7d435019}
+.demo-catalog.layout-flower .demo-filter{border-radius:999px}
+
+/* Architecture: gallery labels, long editorial rows and quiet image crops */
+.demo-page[data-scene="architecture"] .demo-header{background:#f0eee7ed;color:#252822;border-color:#25282220}
+.demo-page[data-scene="architecture"] .demo-header nav a{text-transform:uppercase;font-size:8px;letter-spacing:.09em}
+.demo-page[data-scene="architecture"] .badge-architecture{border:0;border-radius:0;border-bottom:1px solid #717a60;padding:8px 0}
+.demo-proof.route-architecture{background:#252822;color:#f0eee7}
+.demo-proof.route-architecture .route-step{border-left:1px solid #717a60;padding-left:14px}
+.demo-catalog.layout-architecture .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.demo-catalog.layout-architecture .gallery-image{height:350px}
+.demo-catalog.layout-architecture .gallery-tile:nth-child(2n){margin-top:68px}
+.demo-catalog.layout-architecture .gallery-image img{filter:saturate(.78)}
+.demo-catalog.layout-architecture .gallery-image:hover img{filter:saturate(1)}
+.demo-catalog.layout-architecture .tile-info{display:flex;align-items:center;justify-content:space-between;gap:12px}
+
+/* Skincare: clean lab panels, ingredient tabs and soft focus */
+.demo-page[data-scene="beauty"] .demo-header{background:#eff1e9ed;color:#2b332d;border-color:#2b332d18}
+.demo-page[data-scene="beauty"] .demo-header nav a{padding:7px 10px;border-radius:4px}
+.demo-page[data-scene="beauty"] .demo-header nav a[aria-current="location"]{background:#dce4d6}
+.demo-page[data-scene="beauty"] .demo-header button{border-color:#81967a6b;border-radius:3px}
+.demo-page[data-scene="beauty"] .badge-beauty{background:#e0e9da;border:0;border-radius:2px;color:#50614d}
+.demo-proof.route-beauty{background:#dfe6d9;color:#2b332d}
+.demo-proof.route-beauty .route-step{padding:8px 10px;background:#f3f5ee;border-left:3px solid #81967a}
+.demo-catalog.layout-beauty .demo-items{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.demo-catalog.layout-beauty .product-tile{padding:8px;background:#f8f9f4;border:1px solid #42533e16;border-radius:110px 110px 6px 6px}
+.demo-catalog.layout-beauty .item-picture{height:280px;border-radius:100px 100px 2px 2px}
+.demo-catalog.layout-beauty .tile-info{padding:13px 5px}
+.demo-catalog.layout-beauty .product-tile:hover{box-shadow:0 15px 35px #273c2816}
+
+/* Barber: dark service list with a copper booking rail */
+.demo-page[data-scene="barber"] .demo-header{background:#171614ed;color:#f1e9dc;border-color:#ffffff1c}
+.demo-page[data-scene="barber"] .demo-header button{border-color:#c8885166;border-radius:2px;color:#f1e9dc}
+.demo-page[data-scene="barber"] .badge-barber{border-color:#c8885180;color:#e0b98b;background:#211c17}
+.demo-proof.route-barber{background:#201e1a;color:#f1e9dc}
+.demo-proof.route-barber .route-step{position:relative;padding:10px 0 10px 14px;border-left:2px solid #c88851}
+.demo-catalog.layout-barber .demo-items{grid-template-columns:1fr;gap:0}
+.demo-catalog.layout-barber .product-tile{display:grid;grid-template-columns:145px 1fr;align-items:center;gap:15px;padding:12px 0;border-bottom:1px solid #ffffff20}
+.demo-catalog.layout-barber .item-picture{height:106px}
+.demo-catalog.layout-barber .tile-info{display:grid;grid-template-columns:1fr auto;gap:4px 14px;padding:8px}
+.demo-catalog.layout-barber .tile-info>small,.demo-catalog.layout-barber .tile-info h3,.demo-catalog.layout-barber .tile-info>p{grid-column:1}
+.demo-catalog.layout-barber .tile-bottom{grid-column:2;grid-row:1/4;display:flex;flex-direction:column;align-items:flex-end}
+.demo-catalog.layout-barber .time-slot.chosen{box-shadow:0 0 0 4px #c8885133}
+.demo-catalog.layout-barber .demo-filter{border-radius:2px;text-transform:uppercase}
+
+/* Fashion: clean campaign masthead and oversized catalog columns */
+.demo-page[data-scene="fashion"] .demo-header{background:#f1ede5ed;color:#252421;border-color:#2524211c}
+.demo-page[data-scene="fashion"] .demo-header>.wrap{position:relative}
+.demo-page[data-scene="fashion"] .demo-header nav{position:absolute;left:50%;transform:translateX(-50%)}
+.demo-page[data-scene="fashion"] .demo-header nav a{text-transform:uppercase;letter-spacing:.12em;font-size:7px}
+.demo-page[data-scene="fashion"] .demo-header button{border:0;border-bottom:1px solid #a25d43;border-radius:0}
+.demo-page[data-scene="fashion"] .badge-fashion{border:0;border-radius:0;border-top:1px solid #a25d43;border-bottom:1px solid #a25d43;padding:7px 0}
+.demo-proof.route-fashion{background:#2c2925;color:#f3ede4}
+.demo-proof.route-fashion .route-step{display:grid;gap:2px}
+.demo-proof.route-fashion .route-step>b{font-size:25px}
+.demo-catalog.layout-fashion .demo-items{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 18px}
+.demo-catalog.layout-fashion .item-picture{height:430px;background:#e4d9ce}
+.demo-catalog.layout-fashion .product-tile:nth-child(even){margin-top:80px}
+.demo-catalog.layout-fashion .tile-info{padding:12px 2px}
+.demo-catalog.layout-fashion .tile-bottom{border-top:1px solid #25242122;padding-top:10px}
+.demo-catalog.layout-fashion .select-item{border-bottom:1px solid var(--demo-accent)}
+
+/* Travel journal: teal route cards and a continuous image led cover */
+.demo-page[data-scene="travel"] .demo-header{background:#123239ed;color:#eff4ed;border-color:#ffffff1e}
+.demo-page[data-scene="travel"] .demo-header nav a{padding:8px 10px;border-radius:2px}
+.demo-page[data-scene="travel"] .demo-header nav a[aria-current="location"]{background:#ffffff16}
+.demo-page[data-scene="travel"] .badge-travel{background:#17353a99;border-color:#d9e5db77;color:#eff4ed}
+.demo-proof.route-travel{background:#17353a;color:#eff4ed}
+.demo-proof.route-travel .route-step{padding:10px 13px;border:1px solid #ffffff28;border-radius:999px}
+.demo-catalog.layout-travel .demo-items{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.demo-catalog.layout-travel .product-tile{overflow:hidden;background:#f7f5ed;border:1px solid #17353a22}
+.demo-catalog.layout-travel .item-picture{height:300px}
+.demo-catalog.layout-travel .tile-info{padding:20px}
+.demo-catalog.layout-travel .tile-info>small{text-transform:uppercase;letter-spacing:.16em}
+.demo-catalog.layout-travel .product-tile:hover{transform:translateY(-7px);box-shadow:0 22px 35px #17353a24}
+
+/* Interior studio: warm palette, oversized frames and offset project cards */
+.demo-page[data-scene="interior"] .demo-header{background:#eee9dfed;color:#2a2721;border-color:#2a272122}
+.demo-page[data-scene="interior"] .demo-header nav a{font-family:Georgia,serif;font-size:10px}
+.demo-page[data-scene="interior"] .badge-interior{border-radius:2px;background:#e4dac8;border-color:#9d765455}
+.demo-proof.route-interior{background:#dbd3c5;color:#2a2721}
+.demo-proof.route-interior .route-step{padding-bottom:8px;border-bottom:1px solid #9d765455}
+.demo-catalog.layout-interior .gallery-grid{grid-template-columns:repeat(12,minmax(0,1fr));gap:18px}
+.demo-catalog.layout-interior .gallery-tile:nth-child(1){grid-column:span 7}
+.demo-catalog.layout-interior .gallery-tile:nth-child(2){grid-column:span 5;margin-top:65px}
+.demo-catalog.layout-interior .gallery-tile:nth-child(3){grid-column:span 5}
+.demo-catalog.layout-interior .gallery-tile:nth-child(4){grid-column:span 7;margin-top:-60px}
+.demo-catalog.layout-interior .gallery-image{height:325px}
+.demo-catalog.layout-interior .gallery-image img{filter:saturate(.78)}
+.demo-catalog.layout-interior .gallery-tile:nth-child(2) .gallery-image,.demo-catalog.layout-interior .gallery-tile:nth-child(3) .gallery-image{height:270px}
+
+/* Photographer: black gallery wall and staggered contact sheets */
+.demo-page[data-scene="photo"] .demo-header{background:#141513ed;color:#f2f0e8;border-color:#ffffff1c}
+.demo-page[data-scene="photo"] .demo-header nav a{text-transform:uppercase;letter-spacing:.1em;font-size:7px}
+.demo-page[data-scene="photo"] .demo-header button{border-color:#d6a25e66;color:#f2f0e8}
+.demo-page[data-scene="photo"] .badge-photo{border:0;border-left:2px solid #d6a25e;border-radius:0;color:#dfc39e}
+.demo-proof.route-photo{background:#141513;color:#f2f0e8}
+.demo-proof.route-photo .route-step{display:grid;gap:3px}
+.demo-catalog.layout-photo .gallery-grid{grid-template-columns:repeat(12,minmax(0,1fr));gap:11px}
+.demo-catalog.layout-photo .gallery-tile:nth-child(1){grid-column:span 7}
+.demo-catalog.layout-photo .gallery-tile:nth-child(2){grid-column:span 5;margin-top:65px}
+.demo-catalog.layout-photo .gallery-tile:nth-child(3){grid-column:span 5}
+.demo-catalog.layout-photo .gallery-tile:nth-child(4){grid-column:span 7;margin-top:-45px}
+.demo-catalog.layout-photo .gallery-image{height:340px}
+.demo-catalog.layout-photo .gallery-image img{filter:saturate(.8)}
+.demo-catalog.layout-photo .gallery-image:hover img{filter:saturate(1.15)}
+.demo-catalog.layout-photo .gallery-tile:nth-child(1) .gallery-image,.demo-catalog.layout-photo .gallery-tile:nth-child(4) .gallery-image{height:430px}
+
+/* Coworking: light workspace console with framed choices */
+.demo-page[data-scene="cowork"] .demo-header{background:#eee9dfed;color:#2b2922;border-color:#cf804933}
+.demo-page[data-scene="cowork"] .demo-header nav a{padding:8px 10px;background:#ffffff55;border-radius:2px}
+.demo-page[data-scene="cowork"] .demo-header button{border-color:#cf804966;border-radius:2px}
+.demo-page[data-scene="cowork"] .badge-cowork{background:#2b2922;color:#f5eee4;border-color:#2b2922}
+.demo-proof.route-cowork{background:#2b2922;color:#f5eee4}
+.demo-proof.route-cowork .route-step{padding:8px 11px;border:1px solid #ffffff2a}
+.demo-catalog.layout-cowork .demo-items{grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.demo-catalog.layout-cowork .product-tile{display:grid;grid-template-columns:150px 1fr;align-items:center;background:#f6f2e9;border:1px solid #2b29221a}
+.demo-catalog.layout-cowork .item-picture{height:160px}
+.demo-catalog.layout-cowork .tile-info{padding:12px}
+.demo-catalog.layout-cowork .product-tile:nth-child(2){background:#d9dfd2}
+.demo-catalog.layout-cowork .product-tile:hover{transform:translateY(-4px);box-shadow:0 14px 32px #342d2015}
+
+/* Course: syllabus tabs, opened lesson panels and numbered modules */
+.demo-page[data-scene="course"] .demo-header{background:#f2e7dfed;color:#342923;border-color:#c05b3c35}
+.demo-page[data-scene="course"] .demo-header nav a{padding:7px 10px;border-bottom:1px solid transparent}
+.demo-page[data-scene="course"] .demo-header nav a[aria-current="location"]{border-bottom-color:#c05b3c}
+.demo-page[data-scene="course"] .badge-course{border:0;border-left:3px solid #c05b3c;border-radius:0;background:#f8f0e9}
+.demo-proof.route-course{background:#342923;color:#f2e7df}
+.demo-proof.route-course .route-step{display:grid;grid-template-columns:auto 1fr}
+.demo-catalog.layout-course .demo-items{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.demo-catalog.layout-course .module-tile{min-height:310px;border:0;border-top:2px solid #c05b3c;box-shadow:0 8px 24px #3429230d}
+.demo-catalog.layout-course .module-tile:nth-child(2){border-top-color:#d9a63a}
+.demo-catalog.layout-course .module-tile:nth-child(3){border-top-color:#74886e}
+.demo-catalog.layout-course .module-tile details[open]{padding:0 10px 10px;background:#fff8f1}
+.demo-catalog.layout-course .module-tile summary{font-weight:650}
+.demo-catalog.layout-course .module-top span:first-child{font-size:8px;letter-spacing:.17em}
+
+/* Real estate: cool listing sheet, price range and map style details */
+.demo-page[data-scene="realty"] .demo-header{background:#e9edefed;color:#253238;border-color:#25323820}
+.demo-page[data-scene="realty"] .demo-header button{background:#617b85;color:white;border:0;border-radius:2px}
+.demo-page[data-scene="realty"] .badge-realty{background:#253238;color:#f6f8f6;border:0;border-radius:2px}
+.demo-proof.route-realty{background:#253238;color:#eef3f2}
+.demo-proof.route-realty .route-step{padding:8px 12px;background:#ffffff12;border-radius:3px}
+.demo-catalog.layout-realty .demo-items{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.demo-catalog.layout-realty .product-tile{overflow:hidden;background:#f8f9f7;border:1px solid #25323818}
+.demo-catalog.layout-realty .item-picture{height:300px}
+.demo-catalog.layout-realty .tile-info{display:grid;grid-template-columns:1fr auto;gap:7px 14px;padding:17px}
+.demo-catalog.layout-realty .tile-info>small,.demo-catalog.layout-realty .tile-info h3,.demo-catalog.layout-realty .tile-info>p{grid-column:1/-1}
+.demo-catalog.layout-realty .tile-bottom{grid-column:1/-1;padding-top:10px;border-top:1px solid #25323820}
+.demo-catalog.layout-realty .budget{border:1px solid #617b8540;border-radius:3px;background:#f5f7f5}
+.demo-catalog.layout-realty .demo-controls{align-items:center}
+
+/* SaaS: dark application frame and plan selector panels */
+.demo-page[data-scene="saas"] .demo-header{background:#111810f2;color:#f1f4ec;border-color:#ffffff18}
+.demo-page[data-scene="saas"] .demo-header nav a{padding:8px 11px;border:1px solid #ffffff14;border-radius:999px}
+.demo-page[data-scene="saas"] .demo-header nav a:hover,.demo-page[data-scene="saas"] .demo-header nav a[aria-current="location"]{background:#ffffff10}
+.demo-page[data-scene="saas"] .demo-header button{border-color:#b1d27766;border-radius:999px;color:#f1f4ec}
+.demo-page[data-scene="saas"] .badge-saas{background:#1b241a;border-color:#a9d37848;color:#cbe29e;font-family:monospace}
+.demo-proof.route-saas{background:#111810;color:#f1f4ec}
+.demo-proof.route-saas .route-step{padding:10px 12px;border:1px solid #ffffff1c;border-radius:8px}
+.demo-catalog.layout-saas .demo-items{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.demo-catalog.layout-saas .plan-tile{border-radius:12px;transition:transform .35s,border-color .3s,box-shadow .35s}
+.demo-catalog.layout-saas .plan-tile:nth-child(2){background:#24301f;border-color:#b1d27765;transform:translateY(-9px)}
+.demo-catalog.layout-saas .plan-tile:hover{transform:translateY(-12px);box-shadow:0 18px 40px #0006;border-color:#b1d277}
+.demo-catalog.layout-saas .demo-filter{border-radius:999px}
+
+/* Bookshop: paper label, serif navigation and tall shelf cards */
+.demo-page[data-scene="bookshop"] .demo-header{background:#eee7d9ed;color:#312820;border-color:#31282020}
+.demo-page[data-scene="bookshop"] .demo-header>.wrap>a{font:600 17px Georgia,serif;letter-spacing:.02em}
+.demo-page[data-scene="bookshop"] .demo-header nav a{font:11px Georgia,serif}
+.demo-page[data-scene="bookshop"] .badge-bookshop{border-radius:2px;background:#f8f0e3;border-color:#a4573866;color:#81452f}
+.demo-proof.route-bookshop{background:#a45738;color:#fff4e8}
+.demo-proof.route-bookshop .route-step{padding-left:12px;border-left:1px solid #ffffff66}
+.demo-catalog.layout-bookshop .demo-items{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.demo-catalog.layout-bookshop .product-tile{padding:8px;background:#faf5eb;border:1px solid #63472a16}
+.demo-catalog.layout-bookshop .item-picture{height:280px;padding:10px;background:#ded0ba}
+.demo-catalog.layout-bookshop .item-picture img{box-shadow:8px 10px 14px #28211644}
+.demo-catalog.layout-bookshop .tile-info h3{font-family:Georgia,serif;font-size:16px}
+.demo-catalog.layout-bookshop .product-tile:hover{transform:translateY(-6px);box-shadow:0 15px 28px #36271a18}
+
+/* Festival: purple light band, ticket-like lineup and star pops */
+.demo-page[data-scene="festival"] .demo-header{background:#21142ff0;color:#fff4e8;border-color:#ffffff1f}
+.demo-page[data-scene="festival"] .demo-header nav a{padding:7px 10px;border-radius:2px;text-transform:uppercase;font-size:7px;letter-spacing:.12em}
+.demo-page[data-scene="festival"] .demo-header nav a:hover,.demo-page[data-scene="festival"] .demo-header nav a[aria-current="location"]{background:#ffffff12}
+.demo-page[data-scene="festival"] .demo-header button{border-color:#f4aa3566;border-radius:2px;color:#fff4e8}
+.demo-page[data-scene="festival"] .badge-festival{border:0;border-radius:2px;background:#f4aa35;color:#2a1737;box-shadow:5px 5px 0 #e7534d}
+.demo-proof.route-festival{background:#311840;color:#fff4e8}
+.demo-proof.route-festival .route-step{padding:10px 12px;border:1px solid #ffffff2b}
+.demo-catalog.layout-festival .demo-items{grid-template-columns:1fr;gap:6px}
+.demo-catalog.layout-festival .schedule-tile{position:relative;overflow:hidden;border-left:4px solid #f4aa35;transition:transform .3s,background-color .3s}
+.demo-catalog.layout-festival .schedule-tile:nth-child(2){border-left-color:#eb5367}
+.demo-catalog.layout-festival .schedule-tile:nth-child(3){border-left-color:#70ccb4}
+.demo-catalog.layout-festival .schedule-tile:nth-child(4){border-left-color:#8f88ff}
+.demo-catalog.layout-festival .schedule-tile:hover{transform:translateX(7px);background:#ffffff16}
+.demo-catalog.layout-festival .favorite.is-favorite{animation:starPop .32s cubic-bezier(.2,.8,.3,1.4)}
+
+/* Motion system: unique cover treatments plus gentle reveal on scroll */
+@keyframes badgeEnter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes modalFade{from{opacity:0}to{opacity:1}}
+@keyframes modalLift{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes flowerOpen{from{opacity:0;clip-path:inset(24% 16% 0 round 45% 45% 0 0);transform:translateY(12px)}to{opacity:1;clip-path:inset(0 0 0 round 48% 48% 3px 3px);transform:translateY(0)}}
+@keyframes editorialEnter{from{opacity:0;transform:translateX(28px) scale(.985)}to{opacity:1;transform:translateX(0) scale(1)}}
+@keyframes filmEnter{from{opacity:0;filter:brightness(1.8);transform:scale(1.04)}to{opacity:1;filter:brightness(1);transform:scale(1)}}
+@keyframes panelEnter{from{opacity:0;transform:translateY(18px) rotate(-4deg)}to{opacity:1;transform:translateY(0) rotate(-2deg)}}
+@keyframes posterEnter{from{opacity:0;transform:translateY(-14px) rotate(-2deg) scale(.96)}to{opacity:1;transform:translateY(0) rotate(3deg) scale(1)}}
+@keyframes routeDrift{0%,100%{transform:rotate(-3deg) translateY(0)}50%{transform:rotate(-1deg) translateY(-7px)}}
+@keyframes barRise{from{transform:scaleY(.15);transform-origin:bottom}to{transform:scaleY(1);transform-origin:bottom}}
+@keyframes starPop{0%{transform:scale(.6) rotate(-25deg)}70%{transform:scale(1.25) rotate(10deg)}100%{transform:scale(1) rotate(0)}}
+.layout-flower .demo-art{animation:flowerOpen .9s cubic-bezier(.2,.7,.2,1) both}
+.layout-fashion .demo-art{animation:editorialEnter .85s .1s cubic-bezier(.2,.7,.2,1) both}
+.layout-photo .demo-art{animation:filmEnter 1s ease-out both}
+.layout-saas .saas-dashboard{animation:panelEnter .8s .1s cubic-bezier(.2,.7,.2,1) both}
+.layout-travel .route-stamp{animation:routeDrift 6s ease-in-out infinite}
+.layout-festival .festival-poster{animation:posterEnter .8s .08s cubic-bezier(.2,.7,.2,1) both}
+.layout-saas .dashboard-bars i{animation:barRise .6s cubic-bezier(.2,.7,.2,1) both}
+.layout-saas .dashboard-bars i:nth-child(2n){animation-delay:.08s}
+.layout-saas .dashboard-bars i:nth-child(3n){animation-delay:.16s}
+.demo-page.motion-ready .scene-reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--reveal-order)*45ms)}
+.demo-page.motion-ready .scene-reveal.is-visible{opacity:1;transform:translateY(0)}
+.demo-page[data-scene="flower"].motion-ready .scene-reveal:not(.is-visible){transform:translateY(20px) rotate(-.5deg)}
+.demo-page[data-scene="photo"].motion-ready .scene-reveal:not(.is-visible){transform:translateY(12px) scale(.99)}
+.demo-page[data-scene="festival"].motion-ready .scene-reveal:not(.is-visible){transform:translateX(18px)}
+.demo-page[data-scene="saas"].motion-ready .scene-reveal:not(.is-visible){transform:translateY(20px) scale(.99)}
+
+/* Small-screen compositions */
+@media(max-width:800px){
+  .demo-proof .wrap{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .demo-catalog.layout-bakery .demo-items,.demo-catalog.layout-beauty .demo-items,.demo-catalog.layout-bookshop .demo-items{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .demo-catalog.layout-flower .item-picture{height:260px}
+  .demo-catalog.layout-architecture .gallery-tile:nth-child(2n),.demo-catalog.layout-interior .gallery-tile{margin-top:0}
+  .demo-catalog.layout-interior .gallery-tile:nth-child(1),.demo-catalog.layout-interior .gallery-tile:nth-child(2),.demo-catalog.layout-interior .gallery-tile:nth-child(3),.demo-catalog.layout-interior .gallery-tile:nth-child(4){grid-column:span 6}
+  .demo-catalog.layout-photo .gallery-tile:nth-child(1),.demo-catalog.layout-photo .gallery-tile:nth-child(2),.demo-catalog.layout-photo .gallery-tile:nth-child(3),.demo-catalog.layout-photo .gallery-tile:nth-child(4){grid-column:span 6;margin-top:0}
+  .demo-catalog.layout-cowork .product-tile{grid-template-columns:1fr}
+  .demo-catalog.layout-cowork .item-picture{height:190px}
+  .demo-catalog.layout-fashion .item-picture{height:330px}
+  .demo-catalog.layout-barber .product-tile{grid-template-columns:100px 1fr}
+  .demo-catalog.layout-barber .item-picture{height:100px}
+  .demo-catalog.layout-barber .tile-bottom{grid-column:1/-1;grid-row:auto;flex-direction:row;align-items:center}
+  .demo-catalog.layout-saas .plan-tile:nth-child(2){transform:none}
+  .demo-catalog.layout-festival .schedule-tile:hover{transform:translateX(3px)}
+}
+@media(max-width:520px){
+  .demo-proof .wrap{grid-template-columns:1fr 1fr;padding:12px 0}
+  .route-step>span{font-size:7px}
+  .demo-badge{max-width:calc(100vw - 42px);font-size:6px}
+  .demo-catalog.layout-coffee .demo-items,.demo-catalog.layout-flower .demo-items,.demo-catalog.layout-fashion .demo-items,.demo-catalog.layout-travel .demo-items,.demo-catalog.layout-course .demo-items,.demo-catalog.layout-realty .demo-items,.demo-catalog.layout-cowork .demo-items{grid-template-columns:1fr}
+  .demo-catalog.layout-coffee .product-tile{grid-template-columns:92px 1fr}
+  .demo-catalog.layout-coffee .item-picture{height:88px}
+  .demo-catalog.layout-flower .item-picture{height:240px}
+  .demo-catalog.layout-bakery .demo-items,.demo-catalog.layout-beauty .demo-items,.demo-catalog.layout-bookshop .demo-items{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .demo-catalog.layout-bakery .item-picture,.demo-catalog.layout-bookshop .item-picture{height:180px}
+  .demo-catalog.layout-beauty .item-picture{height:215px}
+  .demo-catalog.layout-fashion .item-picture{height:260px}
+  .demo-catalog.layout-architecture .gallery-grid,.demo-catalog.layout-interior .gallery-grid,.demo-catalog.layout-photo .gallery-grid{grid-template-columns:1fr}
+  .demo-catalog.layout-architecture .gallery-tile:nth-child(2n),.demo-catalog.layout-interior .gallery-tile:nth-child(1),.demo-catalog.layout-interior .gallery-tile:nth-child(2),.demo-catalog.layout-interior .gallery-tile:nth-child(3),.demo-catalog.layout-interior .gallery-tile:nth-child(4),.demo-catalog.layout-photo .gallery-tile:nth-child(1),.demo-catalog.layout-photo .gallery-tile:nth-child(2),.demo-catalog.layout-photo .gallery-tile:nth-child(3),.demo-catalog.layout-photo .gallery-tile:nth-child(4){grid-column:span 1;margin-top:0}
+  .demo-catalog.layout-photo .gallery-image,.demo-catalog.layout-interior .gallery-image{height:300px}
+  .demo-catalog.layout-barber .product-tile{grid-template-columns:80px 1fr}
+  .demo-catalog.layout-barber .item-picture{height:82px}
+  .demo-page[data-scene="fashion"] .demo-header nav{position:static;transform:none}
+  .demo-page[data-scene="fashion"] .demo-header nav a:nth-child(2){display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .demo-page *, .demo-page *::before,.demo-page *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
+}
+
