@@ -12,4 +12,4 @@
 
 ## GitHub Pages
 
-В Settings → Pages → Build and deployment выберите GitHub Actions. Workflow в .github/workflows/pages.yml публикует статический сайт после обновления ветки main.
+Когда решите включить GitHub Pages, в Settings → Pages → Build and deployment выберите GitHub Actions. Workflow запускается вручную из Actions и требует включённого Pages. Сейчас репозиторий хранит исходники; публичный хостинг не включён.
