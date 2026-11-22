@@ -57,11 +57,24 @@
 
   const links = Array.from(nav.querySelectorAll('a[href^="#"]'));
   const sections = links.map(link => document.querySelector(link.getAttribute("href"))).filter(Boolean);
+  const routeSteps = Array.from(document.querySelectorAll(".route-step"));
+  const updateRoute = sectionId => {
+    const current = sectionId === "hero" ? 0 : sections.findIndex(section => section.id === sectionId);
+    routeSteps.forEach((step, index) => {
+      const active = index === Math.max(0, current);
+      step.classList.toggle("is-current", active);
+      step.classList.toggle("is-passed", current > index);
+      if (active) step.setAttribute("aria-current", "step");
+      else step.removeAttribute("aria-current");
+    });
+  };
+  updateRoute("hero");
   if ("IntersectionObserver" in window) {
     const navObserver = new IntersectionObserver(entries => {
       const current = entries.filter(entry => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
       if (!current) return;
       document.body.dataset.activeSection = current.target.id;
+      updateRoute(current.target.id);
       links.forEach(link => {
         const active = link.getAttribute("href") === "#" + current.target.id;
         if (active) link.setAttribute("aria-current", "location");
